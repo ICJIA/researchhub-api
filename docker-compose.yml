@@ -3,7 +3,7 @@ version: '3'
 services:
   api-dev:
     build: .
-    image: test/strapi:v3.0.0-beta.5
+    image: icjia/strapi:v3.0.0-beta.5
     command: ["./strapi.sh"]
     env_file:
       - ./Docker/api.env
@@ -16,7 +16,7 @@ services:
     restart: always
 
   api-prod:
-    image: test/strapi:v3.0.0-beta.5
+    image: icjia/strapi:v3.0.0-beta.5
     command: [
       "./wait-for-it.sh",
       "api-dev:1337",
