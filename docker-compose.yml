@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  api-dev:
+    build: .
+    image: test/strapi:v3.0.0-beta.5
+    command: ["./strapi.sh"]
+    env_file:
+      - ./Docker/api.env
+    ports:
+      - "${PORT_DEVELOPMENT}:1337"
+    volumes:
+      - strapi-app:/usr/src/api/strapi-app
+    depends_on:
+      - db
+    restart: always
+
+  api-prod:
+    image: test/strapi:v3.0.0-beta.5
+    command: [
+      "./wait-for-it.sh",
+      "api-dev:1337",
+      "-t",
+      "0",
+      "--",
+      "./strapi.sh"
+    ]
+    env_file:
+      - ./Docker/api.env
+    environment:
+      - PRODUCTION=1
+      - NODE_ENV=production
+    ports:
+      - "${PORT_PRODUCTION}:1337"
+    volumes:
+      - strapi-app:/usr/src/api/strapi-app
+    depends_on:
+      - api-dev
+      - db
+    restart: always
+
+  db:
+    image: mongo
+    env_file:
+      - ./Docker/db.env
+    ports:
+      - "${PORT_DB}:27017"
+    volumes:
+      - db-data:/data/db
+    restart: always
+
+volumes:
+  strapi-app:
+  db-data:
