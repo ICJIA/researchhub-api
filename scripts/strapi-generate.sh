@@ -8,7 +8,7 @@ generate_api() {
 }
 
 # common attrs
-ATTRS_COMMON="status:string title:string slug:string date:date external:boolean"
+ATTRS_COMMON="title:string status:string slug:string date:date external:boolean"
 ATTRS_COMMON="$ATTRS_COMMON categories:json tags:json"
 
 ## generate app type
