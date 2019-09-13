@@ -16,9 +16,7 @@ RUN apk add --no-cache \
 
 RUN npm install -g strapi@3.0.0-beta.15
 
-COPY public/ ./public
-
-COPY scripts/ ./
+COPY files/ ./
 RUN chmod +x ./*.sh
 
 EXPOSE 1337
