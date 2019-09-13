@@ -1,8 +1,9 @@
 #!/bin/sh
 echo -e "\xe2\x9a\x99\xef\xb8\x8f Scaffolding custom setup...\n"
 
-# replace index.html
-cp -f ../public/* public
+# overwrite ./public
+mv -f ../public/* public
+rm -r ../public
 
 # install plugin
 strapi install graphql &
