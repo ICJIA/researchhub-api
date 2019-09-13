@@ -5,6 +5,10 @@ echo -e "\xe2\x9a\x99\xef\xb8\x8f Scaffolding custom setup...\n"
 mv -f ../public/* public
 rm -r ../public
 
+# use custom ./extensions/upload/services/Uploads.js
+mkdir -p ./extensions/upload/services
+mv ../Upload.js ./extensions/upload/services
+
 # install plugin
 strapi install graphql &
 wait "$!"
