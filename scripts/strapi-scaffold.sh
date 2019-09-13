@@ -1,7 +1,4 @@
 #!/bin/sh
-APP_NAME=${APP_NAME:-strapi-app}
-cd $APP_NAME
-
 echo -e "\xe2\x9a\x99\xef\xb8\x8f Scaffolding custom setup...\n"
 
 # replace index.html
