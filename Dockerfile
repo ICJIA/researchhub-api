@@ -14,7 +14,7 @@ RUN apk add --no-cache \
   nasm \
   zlib-dev
 
-RUN  npm install -g strapi@3.0.0-beta.15
+RUN npm install -g strapi@3.0.0-beta.15
 
 COPY public/ ./public
 
